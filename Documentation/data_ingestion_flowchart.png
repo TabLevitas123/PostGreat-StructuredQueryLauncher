@@ -1,0 +1,18 @@
+digraph Data_Ingestion_Flowchart {
+	rankdir=TB size=10
+	Ingest_Start [label="Start Ingestion Process"]
+	FileCheck [label="Verify File Format (CSV, JSON, XML, SQL, Excel)"]
+	DataLoad [label="Load Data from File"]
+	ValidateSchema [label="Validate Against Table Schema"]
+	InsertData [label="Insert Data into Table"]
+	ErrorHandling [label="Handle Errors (Log, Retry, Alert)"]
+	IngestComplete [label="Ingestion Complete"]
+	Ingest_Start -> FileCheck
+	FileCheck -> DataLoad [label="Valid Format"]
+	DataLoad -> ValidateSchema
+	ValidateSchema -> InsertData [label="Schema Matches"]
+	ValidateSchema -> ErrorHandling [label="Schema Mismatch"]
+	InsertData -> IngestComplete
+	DataLoad -> ErrorHandling [label="File Error"]
+	ErrorHandling -> IngestComplete [label="Retry or Fail"]
+}

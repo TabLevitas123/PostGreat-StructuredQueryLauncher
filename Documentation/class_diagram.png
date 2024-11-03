@@ -1,0 +1,26 @@
+digraph Class_Diagram {
+	rankdir=LR size=12
+	ConnectionManager [label="ConnectionManager|connect()|get_cursor()|close_connection()" shape=record]
+	SchemaCreator [label="SchemaCreator|create_schema(schema_name)|drop_schema(schema_name, cascade)" shape=record]
+	TableManager [label="TableManager|create_table(schema_name, table_name, columns)|drop_table(schema_name, table_name, cascade)" shape=record]
+	DataIngestionManager [label="DataIngestionManager|ingest_csv(file_path, table_name)|ingest_json(file_path, table_name)|ingest_xml(file_path, table_name, root_tag, row_tag)" shape=record]
+	IndexManager [label="IndexManager|create_index(table_name, index_name, columns)|drop_index(index_name)" shape=record]
+	ConstraintManager [label="ConstraintManager|add_constraint(table_name, constraint_type, column)|drop_constraint(constraint_name)" shape=record]
+	RoleManager [label="RoleManager|create_role(role_name)|assign_role(role_name, table_name)" shape=record]
+	PrivilegeManager [label="PrivilegeManager|grant_privilege(role_name, privilege, table_name)|revoke_privilege(role_name, privilege, table_name)" shape=record]
+	TestingSuite [label="TestingSuite|run_all_tests()|log_test_results()" shape=record]
+	DataIngestionManager -> ConnectionManager
+	SchemaCreator -> ConnectionManager
+	TableManager -> SchemaCreator
+	ConstraintManager -> TableManager
+	IndexManager -> TableManager
+	RoleManager -> ConnectionManager
+	PrivilegeManager -> RoleManager
+	TestingSuite -> DataIngestionManager
+	TestingSuite -> SchemaCreator
+	TestingSuite -> TableManager
+	TestingSuite -> ConstraintManager
+	TestingSuite -> IndexManager
+	TestingSuite -> RoleManager
+	TestingSuite -> PrivilegeManager
+}

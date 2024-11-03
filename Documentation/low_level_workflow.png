@@ -1,0 +1,50 @@
+digraph Low_Level_Workflow {
+	rankdir=LR size=10
+	Start [label="Initialization & Config Load"]
+	DBConn [label="Establish Database Connection"]
+	Schema [label="Create Schema"]
+	Tables [label="Create Tables"]
+	Ingestion [label="Data Ingestion"]
+	Indexes [label="Manage Indexes"]
+	Constraints [label="Manage Constraints"]
+	Roles [label="Role and Privilege Management"]
+	Testing [label="Run Tests"]
+	End [label="Finalize & Close"]
+	LoadConfig [label="Load Configurations" shape=box]
+	ConnSetup [label="Setup Connection" shape=box]
+	ConnCheck [label="Validate Connection" shape=box]
+	SchemaDef [label="Define Schema Structure" shape=box]
+	TableDef [label="Define Tables" shape=box]
+	FileCheck [label="Check File Format" shape=box]
+	DataLoad [label="Load Data" shape=box]
+	ValidateData [label="Validate Data" shape=box]
+	IndexCreate [label="Create Indexes" shape=box]
+	ConstraintSet [label="Set Constraints" shape=box]
+	RoleAssign [label="Assign Roles" shape=box]
+	PrivAssign [label="Assign Privileges" shape=box]
+	TestSuite [label="Execute Test Suite" shape=box]
+	LogResults [label="Log Test Results" shape=box]
+	Start -> LoadConfig
+	LoadConfig -> DBConn
+	DBConn -> ConnSetup
+	ConnSetup -> ConnCheck
+	ConnCheck -> Schema [label=Success]
+	Schema -> SchemaDef
+	SchemaDef -> Tables
+	Tables -> TableDef
+	TableDef -> Ingestion
+	Ingestion -> FileCheck
+	FileCheck -> DataLoad [label="Valid Format"]
+	DataLoad -> ValidateData
+	ValidateData -> Indexes
+	Indexes -> IndexCreate
+	IndexCreate -> Constraints
+	Constraints -> ConstraintSet
+	ConstraintSet -> Roles
+	Roles -> RoleAssign
+	RoleAssign -> PrivAssign
+	PrivAssign -> Testing
+	Testing -> TestSuite
+	TestSuite -> LogResults
+	LogResults -> End
+}

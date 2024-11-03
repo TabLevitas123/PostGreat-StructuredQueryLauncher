@@ -1,0 +1,27 @@
+digraph Error_Handling_Flowcharts {
+	rankdir=TB size=10
+	Ingest_Start [label="Data Ingestion Start"]
+	FileNotFound [label="File Not Found"]
+	DataMismatch [label="Data Mismatch with Schema"]
+	HandleError [label="Handle Error (Log, Retry, Alert)"]
+	Ingest_Start -> FileNotFound [label="File Path Issue"]
+	Ingest_Start -> DataMismatch [label="Schema Mismatch"]
+	FileNotFound -> HandleError
+	DataMismatch -> HandleError
+	Conn_Start [label="Connection Attempt"]
+	ConnError [label="Connection Error"]
+	RetryConnect [label="Retry Connection"]
+	ReportError [label="Report & Log Error"]
+	Conn_Start -> ConnError [label="Connection Failure"]
+	ConnError -> RetryConnect [label="Retry Logic"]
+	RetryConnect -> Conn_Start [label=Reattempt]
+	ConnError -> ReportError [label="Max Retries Exceeded"]
+	Role_Start [label="Role Management Start"]
+	RoleExists [label="Role Already Exists"]
+	RoleMissing [label="Role Not Found"]
+	HandleRoleError [label="Log & Alert"]
+	Role_Start -> RoleExists [label="Duplicate Role"]
+	Role_Start -> RoleMissing [label="Role Nonexistent"]
+	RoleExists -> HandleRoleError
+	RoleMissing -> HandleRoleError
+}

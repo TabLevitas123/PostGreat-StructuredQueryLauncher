@@ -1,0 +1,16 @@
+digraph Audit_Logging_Flowchart {
+	rankdir=TB size=10
+	AppStart [label="Application Start"]
+	AuditInit [label="Initialize Audit Logs"]
+	LogConfig [label="Log Configuration Settings"]
+	ProcessLog [label="Log Each Major Process"]
+	ErrorLog [label="Log Errors and Exceptions"]
+	TestResults [label="Log Test Suite Results"]
+	AuditEnd [label="Finalize and Store Logs"]
+	AppStart -> AuditInit
+	AuditInit -> LogConfig
+	LogConfig -> ProcessLog
+	ProcessLog -> ErrorLog
+	ErrorLog -> TestResults
+	TestResults -> AuditEnd
+}

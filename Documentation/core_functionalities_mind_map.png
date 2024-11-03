@@ -1,0 +1,62 @@
+digraph Core_Functionalities_Mind_Map {
+	rankdir=TB size=10
+	Main [label="Database Creation Wizard"]
+	Config [label=Config]
+	Main -> Config
+	"Config_Database Connection" [label="Database Connection"]
+	Config -> "Config_Database Connection"
+	"Config_API Key Management" [label="API Key Management"]
+	Config -> "Config_API Key Management"
+	Config_Extensions [label=Extensions]
+	Config -> Config_Extensions
+	Schema [label=Schema]
+	Main -> Schema
+	"Schema_Schema Creation" [label="Schema Creation"]
+	Schema -> "Schema_Schema Creation"
+	"Schema_Table Management" [label="Table Management"]
+	Schema -> "Schema_Table Management"
+	"Schema_View Management" [label="View Management"]
+	Schema -> "Schema_View Management"
+	DataIngest [label=DataIngest]
+	Main -> DataIngest
+	"DataIngest_CSV Ingestion" [label="CSV Ingestion"]
+	DataIngest -> "DataIngest_CSV Ingestion"
+	"DataIngest_JSON Ingestion" [label="JSON Ingestion"]
+	DataIngest -> "DataIngest_JSON Ingestion"
+	"DataIngest_XML Ingestion" [label="XML Ingestion"]
+	DataIngest -> "DataIngest_XML Ingestion"
+	"DataIngest_SQL Execution" [label="SQL Execution"]
+	DataIngest -> "DataIngest_SQL Execution"
+	"DataIngest_Excel Ingestion" [label="Excel Ingestion"]
+	DataIngest -> "DataIngest_Excel Ingestion"
+	AccessControl [label=AccessControl]
+	Main -> AccessControl
+	"AccessControl_Role Management" [label="Role Management"]
+	AccessControl -> "AccessControl_Role Management"
+	"AccessControl_Privilege Management" [label="Privilege Management"]
+	AccessControl -> "AccessControl_Privilege Management"
+	DataStruct [label=DataStruct]
+	Main -> DataStruct
+	"DataStruct_Index Management" [label="Index Management"]
+	DataStruct -> "DataStruct_Index Management"
+	"DataStruct_Constraint Management" [label="Constraint Management"]
+	DataStruct -> "DataStruct_Constraint Management"
+	"DataStruct_Sequence Management" [label="Sequence Management"]
+	DataStruct -> "DataStruct_Sequence Management"
+	"DataStruct_Type Management" [label="Type Management"]
+	DataStruct -> "DataStruct_Type Management"
+	"DataStruct_Function Management" [label="Function Management"]
+	DataStruct -> "DataStruct_Function Management"
+	"DataStruct_Trigger Management" [label="Trigger Management"]
+	DataStruct -> "DataStruct_Trigger Management"
+	Testing [label=Testing]
+	Main -> Testing
+	"Testing_Connection Tests" [label="Connection Tests"]
+	Testing -> "Testing_Connection Tests"
+	"Testing_Data Integrity Tests" [label="Data Integrity Tests"]
+	Testing -> "Testing_Data Integrity Tests"
+	"Testing_Role and Privilege Tests" [label="Role and Privilege Tests"]
+	Testing -> "Testing_Role and Privilege Tests"
+	"Testing_Functionality Tests" [label="Functionality Tests"]
+	Testing -> "Testing_Functionality Tests"
+}

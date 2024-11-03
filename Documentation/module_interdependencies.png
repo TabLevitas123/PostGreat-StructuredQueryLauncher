@@ -1,0 +1,35 @@
+digraph Module_Interdependencies {
+	rankdir=LR size=12
+	Connection [label=connection_manager]
+	Schema [label=schema_creator]
+	Table [label=table_manager]
+	Ingestion [label=data_ingestion_manager]
+	Index [label=index_manager]
+	Constraint [label=constraint_manager]
+	Role [label=role_manager]
+	Privilege [label=privilege_manager]
+	Trigger [label=trigger_manager]
+	Type [label=type_manager]
+	Extensions [label=extensions_manager]
+	Testing [label=run_all_tests]
+	Ingestion -> Connection
+	Schema -> Connection
+	Table -> Schema
+	Constraint -> Table
+	Index -> Table
+	Role -> Connection
+	Privilege -> Role
+	Trigger -> Table
+	Type -> Connection
+	Extensions -> Connection
+	Testing -> Ingestion
+	Testing -> Schema
+	Testing -> Table
+	Testing -> Constraint
+	Testing -> Index
+	Testing -> Role
+	Testing -> Privilege
+	Testing -> Trigger
+	Testing -> Type
+	Testing -> Extensions
+}

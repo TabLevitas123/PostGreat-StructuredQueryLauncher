@@ -1,0 +1,16 @@
+digraph High_Level_Workflow {
+	rankdir=LR size=10
+	Start [label="Start Wizard"]
+	DBConfig [label="Database Configuration"]
+	SchemaCreation [label="Schema Creation"]
+	DataIngestion [label="Data Ingestion"]
+	Constraints [label="Manage Constraints & Indexes"]
+	Testing [label="Run Tests"]
+	End [label="Complete Setup"]
+	Start -> DBConfig
+	DBConfig -> SchemaCreation
+	SchemaCreation -> DataIngestion
+	DataIngestion -> Constraints
+	Constraints -> Testing
+	Testing -> End
+}

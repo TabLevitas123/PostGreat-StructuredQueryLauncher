@@ -1,0 +1,16 @@
+digraph Schema_Table_Creation_Flowchart {
+	rankdir=TB size=10
+	StartSchema [label="Start Schema Creation"]
+	DefineSchema [label="Define Schema Structure"]
+	SchemaComplete [label="Schema Created"]
+	StartTable [label="Begin Table Creation"]
+	DefineTable [label="Define Table Columns and Data Types"]
+	AddConstraints [label="Add Constraints (PK, FK, Unique)"]
+	TableComplete [label="Table Created"]
+	StartSchema -> DefineSchema
+	DefineSchema -> SchemaComplete
+	SchemaComplete -> StartTable
+	StartTable -> DefineTable
+	DefineTable -> AddConstraints
+	AddConstraints -> TableComplete
+}

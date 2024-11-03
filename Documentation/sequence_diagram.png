@@ -1,0 +1,18 @@
+digraph Sequence_Diagram {
+	rankdir=LR size=12
+	User [label=User shape=ellipse]
+	DataIngestion [label=DataIngestionManager shape=ellipse]
+	Connection [label=ConnectionManager shape=ellipse]
+	Schema [label=SchemaCreator shape=ellipse]
+	Table [label=TableManager shape=ellipse]
+	User -> DataIngestion [label="Start Data Ingestion"]
+	DataIngestion -> Connection [label="Connect to Database"]
+	Connection -> DataIngestion [label="Connection Established"]
+	DataIngestion -> Schema [label="Check Schema Existence"]
+	Schema -> DataIngestion [label="Schema Verified"]
+	DataIngestion -> Table [label="Check Table Existence"]
+	Table -> DataIngestion [label="Table Verified"]
+	DataIngestion -> Table [label="Insert Data into Table"]
+	Table -> DataIngestion [label="Insertion Complete"]
+	DataIngestion -> User [label="Ingestion Complete"]
+}
